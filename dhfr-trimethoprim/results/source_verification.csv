@@ -18,4 +18,8 @@ PDB and mmCIF agree for P0ABQ4,True,True,PASS
 1RX2 has only FOL + NAP,"['FOL', 'NAP']","['BME', 'FOL', 'MN', 'NAP']",FAIL
 PubChem CID is 5578,5578,5578,PASS
 formula is C14H18N4O3,C14H18N4O3,C14H18N4O3,PASS
+heavy-atom count is 21,21,21,PASS
 PDF SMILES == PubChem SMILES,COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC,COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC,PASS
+PDF SMILES heavy-atom count matches PubChem,21,21,PASS
+PDF SMILES total-with-H matches PubChem,39,39,PASS
+vina supports --log (used in plan Phase 4b),True,False,FAIL

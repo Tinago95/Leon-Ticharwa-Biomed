@@ -83,7 +83,7 @@ mismatch when aligning the AlphaFold model to the crystal; it is not a parsing b
 | Compound | Trimethoprim |
 | PubChem CID | `5578` |
 | Formula | C14H18N4O3 |
-| Heavy atoms | 39 |
+| Atoms | 39 total — **21 heavy** + 18 hydrogens |
 | SMILES | `COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC` |
 
 The SMILES string hardcoded in the PDF (`COc1cc(cc(c1OC)OC)Cc2cnc(nc2N)N`) is **correct** —
@@ -132,6 +132,10 @@ and state the method** rather than citing 26% as if it were measured.
 | 2 | 6 | `1U72` = methotrexate + NADP+ | Contains NADPH (NDP) | Affects receptor prep |
 | 3 | 6 | `2W9G / 2W9H` = trimethoprim + NADPH | 2W9H has no cofactor | Breaks the redocking gate if 2W9H chosen |
 | 4 | 7 | `1RX2` = folate + NADP+ | Also Mn²⁺ and β-mercaptoethanol | Undefined prep step |
+| 5 | 9 | Phase 4b command uses `vina --log` | `--log` was removed in Vina 1.2 | **Command fails as written** |
+
+Error 5: the plan cites Vina 1.2 (Eberhardt 2021) but writes 1.1.2 syntax. Redirect
+stdout instead — see [`decisions.md`](decisions.md).
 
 ### Verified correct
 
