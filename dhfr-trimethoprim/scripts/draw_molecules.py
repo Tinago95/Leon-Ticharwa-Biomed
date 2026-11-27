@@ -16,12 +16,6 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "figures" / "molecules"
 OUT.mkdir(parents=True, exist_ok=True)
 
-# Colours matched to the project's figures.
-RED = (0.70, 0.23, 0.18)      # diaminopyrimidine / warhead
-AMBER = (0.85, 0.48, 0.17)    # trimethoxyphenyl / lipophilic
-BLUE = (0.25, 0.45, 0.70)     # cofactor business end
-GREEN = (0.20, 0.55, 0.40)    # pterin
-
 MOLECULES = {
     "trimethoprim": (
         "COc1cc(cc(c1OC)OC)Cc2cnc(nc2N)N",
@@ -55,31 +49,19 @@ MOLECULES = {
 }
 
 
-def draw(name: str, smiles: str, highlights=None, size=(560, 340)) -> Path | None:
+def draw(name: str, smiles: str, size=(560, 340)) -> Path | None:
     mol = Chem.MolFromSmiles(smiles)
     if mol is None:
         print(f"  SKIP {name}: SMILES would not parse")
         return None
     AllChem.Compute2DCoords(mol)
 
-    atoms, colours = [], {}
-    for smarts, colour in (highlights or []):
-        patt = Chem.MolFromSmarts(smarts)
-        if patt is None:
-            continue
-        for idx in mol.GetSubstructMatch(patt):
-            atoms.append(idx)
-            colours[idx] = colour
-
     drawer = rdMolDraw2D.MolDraw2DCairo(*size)
     opts = drawer.drawOptions()
     opts.clearBackground = True
     opts.bondLineWidth = 2
-    rdMolDraw2D.PrepareAndDrawMolecule(
-        drawer, mol,
-        highlightAtoms=atoms or None,
-        highlightAtomColors=colours or None,
-    )
+    opts.additionalAtomLabelPadding = 0.08
+    rdMolDraw2D.PrepareAndDrawMolecule(drawer, mol)
     drawer.FinishDrawing()
 
     path = OUT / f"{name}.png"
@@ -87,27 +69,11 @@ def draw(name: str, smiles: str, highlights=None, size=(560, 340)) -> Path | Non
     return path
 
 
-HIGHLIGHTS = {
-    "trimethoprim": [
-        ("c1nc(N)nc(N)c1", RED),
-        ("c1cc(OC)c(OC)c(OC)c1", AMBER),
-    ],
-    "trimethoprim_protonated": [
-        ("c1[nH+]c(N)nc(N)c1", RED),
-        ("c1cc(OC)c(OC)c(OC)c1", AMBER),
-    ],
-    "methotrexate": [("Nc1nc(N)c2nccnc2n1", RED)],
-    "dihydrofolate": [("Nc1nc2NCC=Nc2c(=O)[nH]1", GREEN)],
-    "tetrahydrofolate": [("NC1=NC2=C(C(=O)N1)NCCN2", GREEN)],
-    "folic_acid": [("Nc1nc2nccnc2c(=O)[nH]1", GREEN)],
-    "nadph": [("NC(=O)C1=CN(C=CC1)", BLUE)],
-}
-
 
 def main() -> None:
     print(f"writing to {OUT}")
     for name, (smiles, caption) in MOLECULES.items():
-        path = draw(name, smiles, HIGHLIGHTS.get(name))
+        path = draw(name, smiles)
         if path:
             mol = Chem.MolFromSmiles(smiles)
             formula = Chem.rdMolDescriptors.CalcMolFormula(mol)

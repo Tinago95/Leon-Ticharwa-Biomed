@@ -62,8 +62,9 @@ DHF  +  NADPH  +  H⁺   ──DHFR──>   THF  +  NADP⁺
 the form of a hydride, H⁻). Reduction always comes paired with an **oxidation**
 somewhere else; something has to supply those electrons.
 
-Here are the two molecules either side of that arrow. The **pterin ring** is highlighted
-green — that's the business end, and the only part that changes:
+Here are the two molecules either side of that arrow. The **pterin ring** is the
+double-ring system at the far left of each — that's the business end, and the only part
+that changes:
 
 | Substrate — dihydrofolate (DHF) | Product — tetrahydrofolate (THF) |
 |:---:|:---:|
@@ -71,8 +72,12 @@ green — that's the business end, and the only part that changes:
 | C19H21N7O6 | C19H23N7O6 |
 
 Look closely and the difference is tiny: two hydrogens, added across one double bond in
-the green ring. The long tail on the right of both molecules (the benzoyl-glutamate) is
-unchanged — it's a handle the enzyme grips, not part of the chemistry.
+that left-hand ring system. The long tail on the right of both molecules (the
+benzoyl-glutamate) is unchanged — it's a handle the enzyme grips, not part of the
+chemistry.
+
+In the drawings, blue atoms are nitrogen and red are oxygen; carbons are the unlabelled
+vertices. That's the standard convention and it's the only colouring used here.
 
 That two-hydrogen difference is the entire reaction, and the entire reason this enzyme is
 a drug target.
@@ -100,9 +105,9 @@ molecules with different charge and slightly different shape.
 ![NADPH](figures/molecules/nadph.png)
 
 NADPH is large — 48 heavy atoms, nearly half of them in the phosphate-sugar scaffolding.
-The blue-highlighted **nicotinamide ring** on the left is the only part that does
-chemistry; everything else is a handle for the enzyme to grip and a way of keeping the
-molecule inside the cell.
+The single six-membered ring carrying the **C(=O)NH₂ group** — the **nicotinamide** — is
+the only part that does chemistry. Everything else is a handle for the enzyme to grip and
+a way of keeping the molecule inside the cell.
 
 This matters practically: NADPH occupies a big chunk of the active site. Remove it from a
 receptor before docking and you leave a large empty cavity that a drug will happily fall
@@ -180,11 +185,11 @@ That text string draws as this:
 
 ![trimethoprim](figures/molecules/trimethoprim.png)
 
-The two colours are the two halves of the molecule, and they do different jobs:
+It has two halves, and they do different jobs:
 
-- **Red — the diaminopyrimidine ring.** The warhead. It mimics the pterin ring of folate and makes the charged hydrogen bond to Asp27. If a docked pose doesn't engage this, the pose is wrong no matter what it scores.
-- **Amber — the trimethoxyphenyl ring.** Sits in a greasy (hydrophobic) part of the pocket. Contributes much of the binding but little of the specificity.
-- **Uncoloured, between them — the methylene bridge.** A single CH₂. It lets the two rings twist relative to each other, and is one of the seven rotatable bonds.
+- **Right — the diaminopyrimidine ring.** The ring with two blue nitrogens and two NH₂ groups. This is the warhead: it mimics the pterin ring of folate and makes the charged hydrogen bond to Asp27. If a docked pose doesn't engage this, the pose is wrong no matter what it scores.
+- **Left — the trimethoxyphenyl ring.** The benzene ring carrying three OCH₃ groups. It sits in a greasy (hydrophobic) part of the pocket, contributing much of the binding but little of the specificity.
+- **Between them — the methylene bridge.** A single CH₂, drawn as the plain vertex joining the two rings. It lets them twist relative to each other, and is one of the seven rotatable bonds.
 
 Keep this picture in mind for the rest of the guide; almost every result refers to one of
 these three parts.
