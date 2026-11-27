@@ -553,9 +553,12 @@ this project's write-up is published.
 - Eberhardt et al., AutoDock Vina 1.2, *Journal of Chemical Information and Modeling* (2021); RDKit, Meeko and ProLIF documentation.
 - Jumper et al., AlphaFold2, *Nature* (2021), for what pLDDT and PAE actually mean.
 
-> **Not verified.** The five journal citations above were **not** checked. Authors, years
-> and titles still need confirming against the literature before they go in a write-up.
-> The PDB and UniProt identifiers in this list *have* been verified.
+> **Verified.** All five citations were checked against Crossref, PubMed and the RCSB
+> primary-citation records. All are real. Two details were off: the Matthews 1985 paper
+> covers *E. coli* **and chicken liver** DHFR, not just *E. coli*, and `7DFR` is cited to
+> Bystroff, Oatley & Kraut 1990, not to Matthews. `2W3A` is unpublished, so cite the PDB
+> entry. Full details, with volumes, pages and DOIs, in
+> [`notes/references.md`](notes/references.md).
 
 ---
 
@@ -567,7 +570,7 @@ this project's write-up is published.
 - [ ] Learning log is complete enough that the write-up needed no invented memories.
 - [ ] The write-up's "what this does not show" paragraph is present and specific.
 - [ ] No sentence anywhere claims a docking score is a measured affinity.
-- [ ] Journal citations verified against the literature.
+- [x] Journal citations verified against the literature (see [`notes/references.md`](notes/references.md)).
 
 ---
 
