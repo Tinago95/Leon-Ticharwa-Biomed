@@ -1,0 +1,4 @@
+ligand,file,rotatable_branches,smiles
+tmp_protonated,tmp_protonated.pdbqt,7,COc1cc(cc(c1OC)OC)Cc2c[nH+]c(N)nc2N
+tmp_neutral,tmp_neutral.pdbqt,7,COc1cc(cc(c1OC)OC)Cc2cnc(nc2N)N
+mtx,mtx.pdbqt,13,CN(Cc1cnc2nc(N)nc(N)c2n1)c1ccc(C(=O)N[C@@H](CCC(=O)O)C(=O)O)cc1

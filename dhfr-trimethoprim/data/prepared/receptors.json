@@ -1,0 +1,24 @@
+{
+  "2w9g": {
+    "pdbqt": "/Users/leon-ticharwa/Documents/repos/Leon-Ticharwa-Biomed/dhfr-trimethoprim/data/prepared/2w9g_receptor.pdbqt",
+    "cofactor": true,
+    "deleted": [
+      "A:158"
+    ]
+  },
+  "1rx2": {
+    "pdbqt": "/Users/leon-ticharwa/Documents/repos/Leon-Ticharwa-Biomed/dhfr-trimethoprim/data/prepared/1rx2_receptor.pdbqt",
+    "cofactor": true,
+    "deleted": []
+  },
+  "1u72": {
+    "pdbqt": "/Users/leon-ticharwa/Documents/repos/Leon-Ticharwa-Biomed/dhfr-trimethoprim/data/prepared/1u72_receptor.pdbqt",
+    "cofactor": true,
+    "deleted": []
+  },
+  "af_ecoli": {
+    "pdbqt": "/Users/leon-ticharwa/Documents/repos/Leon-Ticharwa-Biomed/dhfr-trimethoprim/data/prepared/af_ecoli_receptor.pdbqt",
+    "cofactor": false,
+    "deleted": []
+  }
+}

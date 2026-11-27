@@ -1,0 +1,5 @@
+receptor,file,deleted,atoms,has_NADPH,has_NADP+,additives_left
+2w9g,2w9g_receptor.pdbqt,A:158,1589,True,False,[]
+1rx2,1rx2_receptor.pdbqt,-,1584,False,True,[]
+1u72,1u72_receptor.pdbqt,-,1888,True,False,[]
+af_ecoli,af_ecoli_receptor.pdbqt,-,1531,False,False,[]

@@ -1,0 +1,5 @@
+region,residues,GNM_vs_rest,ANM_vs_rest,mean_deviation_A,mean_pLDDT
+F-G loop,116-132,1.44,1.31,0.34,93.2
+G-H loop,142-150,1.27,6.04,0.71,97.4
+active site,25-32,1.26,0.59,0.27,97.8
+Met20 loop,9-24,1.09,0.42,0.33,87.7

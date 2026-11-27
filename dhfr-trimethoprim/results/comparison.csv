@@ -1,0 +1,2 @@
+comparison,paired_CA,backbone_rmsd_A,reading,worst_region,worst_region_mean_dev_A,worst_region_mean_plddt,plddt_predicted_it,asp27_plddt,active_site_min_plddt
+AlphaFold P0ABQ4 vs 1RX2 chain A,159,0.361,essentially the same backbone,G-H loop,0.71,97.4,False,97.8,79.2

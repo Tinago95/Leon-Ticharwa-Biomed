@@ -1,0 +1,7 @@
+form,seed,top_score,top_rmsd,best_rmsd_any_mode,best_mode_index,passes
+protonated,1,-8.145,0.454,0.421,2,True
+protonated,2,-8.146,0.443,0.443,1,True
+protonated,3,-8.157,0.442,0.435,2,True
+neutral,1,-7.595,0.444,0.437,2,True
+neutral,2,-7.612,0.42,0.42,1,True
+neutral,3,-7.596,0.453,0.453,1,True

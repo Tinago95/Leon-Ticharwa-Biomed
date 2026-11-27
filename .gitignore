@@ -1,5 +1,6 @@
 .venv/
 __pycache__/
+_ref_tmp.pdb
 *.pyc
 .ipynb_checkpoints/
 .DS_Store

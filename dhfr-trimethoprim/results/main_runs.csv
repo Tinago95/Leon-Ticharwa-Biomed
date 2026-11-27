@@ -1,0 +1,5 @@
+run,receptor,ligand,cofactor,top_score,mode_spread,purpose
+run2_ecoli_crystal,1rx2,tmp_protonated,True,-7.384,1.48,Cross-docking: does the validated protocol transfer to a structure solved with a different ligand?
+run3_ecoli_alphafold,af_ecoli,tmp_protonated,False,-7.698,0.91,"Headline comparison: same ligand, predicted vs experimental receptor."
+run4_human,1u72,tmp_protonated,True,-7.99,0.92,Selectivity: expect a weaker score and/or a different pose.
+run4b_human_mtx,1u72,mtx,True,-10.11,1.72,Positive control: methotrexate should score strongly against human DHFR.
