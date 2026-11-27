@@ -735,12 +735,27 @@ accuracy**: that's a lesson worth a sentence in the write-up.
 
 Checked against experimental Kᵢ for every compound ChEMBL has in both enzymes:
 
-| Test | Spearman ρ | RMSE | Reading |
-|---|---|---|---|
-| Potency ranking, *E. coli* | **+0.54** | 2.84 | Moderate, real signal |
-| Potency ranking, human | +0.11 | 1.72 | Essentially none |
-| **Cross-protein selectivity** | **−0.21** (p = 0.32) | 3.54 | **Nothing, and pointing the wrong way** |
-| Selectivity, double-difference | −0.20 | 2.93 | No better |
+| Test | Spearman ρ | 95% CI | RMSE | Reading |
+|---|---|---|---|---|
+| Potency ranking, *E. coli* | +0.54 | [+0.16, +0.79] | 2.84 | Real, but see below |
+| Potency ranking, human | +0.11 | [−0.33, +0.54] | 1.72 | Nothing |
+| **Cross-protein selectivity** | **−0.21** | [−0.57, +0.21] | 3.54 | **Nothing, pointing the wrong way** |
+| Selectivity, double-difference | −0.20 | | 2.93 | No better |
+
+**The +0.54 is mostly molecule size.** Vina's score tracks heavy-atom count at ρ = −0.76,
+and real affinity tracks it at ρ = −0.60. Two things that both follow size correlate with
+each other regardless of chemistry. Holding size fixed, the partial correlation drops to
+**+0.16**.
+
+Dividing by heavy-atom count (ligand efficiency) appears to fix this, giving ρ = +0.83.
+It does not: feeding two *independent* random series through the same division also gives
+a median ρ of +0.83. A shared divisor manufactures correlation. The partial correlation is
+the number to trust.
+
+**The selectivity conclusion rests on the direction test, not the correlation.** With
+n = 25 the interval [−0.57, +0.21] cannot exclude zero. But getting the sign right for
+1 of 14 compounds is significantly worse than chance (binomial p = 0.002), and that test
+is far less fragile at small n.
 
 Three further things, all damning:
 
@@ -781,8 +796,8 @@ snapshot you give it, not the protein's full behaviour.
 
 - "The protocol reproduced the crystallographic binding pose of trimethoprim to within 0.45 Å, across three random seeds."
 - "The AlphaFold model agreed with the crystal structure to 0.361 Å backbone RMSD."
-- "Docking ranked compound potency within *E. coli* DHFR with moderate correlation (Spearman ρ = 0.54, n = 25), but not within human DHFR (ρ = 0.11)."
-- "Docking showed no useful correlation with experimental cross-protein selectivity (ρ = −0.21, p = 0.32, n = 25), and predicted the direction of selectivity correctly for only 1 of 14 compounds."
+- "Docking ranked compound potency within *E. coli* DHFR at Spearman ρ = 0.54 (n = 25), but this falls to ρ = 0.16 once heavy-atom count is held fixed, so most of the apparent signal is molecular size."
+- "Docking predicted the direction of cross-protein selectivity correctly for 1 of 14 compounds, significantly worse than chance (binomial p = 0.002), and showed no usable rank correlation (ρ = −0.21, 95% CI [−0.57, +0.21])."
 - "The docked poses contacted the expected anchoring residues in both enzymes, so the failure is in scoring rather than sampling."
 
 ### You may not say

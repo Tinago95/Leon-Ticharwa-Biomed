@@ -92,17 +92,42 @@ I used only Kᵢ, never IC₅₀. By Cheng–Prusoff, an IC₅₀ depends on the
 concentration the assay used, and ChEMBL rarely records it, so pooling IC₅₀ across labs
 would compare quantities that aren't the same thing.
 
-| Test | Spearman ρ |
-|---|---|
-| Ranking potency within *E. coli* | **+0.54** |
-| Ranking potency within human | +0.11 |
-| **Predicting selectivity between them** | **−0.21** (p = 0.32) |
+| Test | Spearman ρ | 95% CI |
+|---|---|---|
+| Ranking potency within *E. coli* | +0.54 | [+0.16, +0.79] |
+| Ranking potency within human | +0.11 | [−0.33, +0.54] |
+| **Predicting selectivity between them** | **−0.21** | [−0.57, +0.21] |
 
-Docking got the direction of selectivity right for **1 compound out of 14**. A coin flip
-would manage about 7. Its predictions spanned 23% of the experimental range and never
-crossed zero, meaning the method cannot express a bacterial-selective compound at all.
+The strongest evidence isn't the correlation, which at 25 points has a confidence
+interval wide enough to drive a bus through. It's the direction test: docking got the
+sign of selectivity right for **1 compound out of 14**, where a coin flip would manage
+about 7. That's significantly *worse* than guessing (binomial p = 0.002), and unlike the
+correlation it doesn't depend on a fragile estimate from a small sample.
+
+Its predictions also spanned only 23% of the experimental range and never crossed zero,
+so the method cannot express a bacterial-selective compound at all.
 
 The trimethoprim result wasn't bad luck.
+
+### The one positive result is mostly an artefact
+
+I was briefly pleased with that +0.54 for ranking potency in *E. coli*. Then I checked
+what was driving it.
+
+Vina's score tracks molecule size almost deterministically (ρ = −0.76 against heavy-atom
+count). Real binding affinity also tends to rise with size (ρ = −0.60). Two quantities
+that both follow size will correlate with each other whether or not the method
+understands any chemistry.
+
+Holding size fixed, the partial correlation falls from **+0.54 to +0.16**.
+
+The obvious fix, ligand efficiency, is worse than useless here: dividing both sides by
+heavy-atom count gives an impressive-looking ρ = +0.83, but simulating two *independent*
+random series through the same division produces a median ρ of +0.83 as well. The shared
+divisor manufactures the entire result.
+
+So the honest version is that this protocol ranks potency only weakly once you control
+for the most trivial property a molecule has.
 
 ### Where exactly it breaks
 
@@ -156,10 +181,15 @@ notebook now asserts both so it can't drift again.
 This is not drug discovery. No new compound, no patient-relevant claim.
 
 A docking score is not a measured binding affinity, and I have not reported one as if it
-were. The benchmark covers 25 compounds from heterogeneous assays against one target pair:
-small enough that every correlation here has a wide confidence interval, and not a general
-statement about docking as a technique. It worked for pose prediction and partially for
-potency ranking; it failed at one specific task that is known to be hard.
+were. It worked for pose prediction, weakly for potency ranking once size is controlled
+for, and not at all for the selectivity question.
+
+The benchmark has real limits I'd rather state than have someone find:
+
+- **25 compounds** is small. Every confidence interval above is wide, and the selectivity interval spans zero, so strictly I cannot distinguish ρ = −0.21 from no relationship. The direction test is what carries that conclusion, not the correlation.
+- **10 of the 25 pairs come from different papers**, mixing assay conditions. Only 15 are same-paper measurements where the comparison is clean.
+- **The set is chemically diverse** (median Tanimoto 0.22 to trimethoprim, none above 0.7). That makes it a fair test rather than a narrow analogue series, but it is also the regime where scoring functions are known to be weakest: ranking across scaffolds is harder than ranking within one.
+- **One target pair, one scoring function.** This says nothing general about docking as a technique.
 
 I also haven't tested the obvious next steps. MM-GBSA rescoring would put explicit charges
 and desolvation back in and might close the gap. Relative free-energy perturbation through
