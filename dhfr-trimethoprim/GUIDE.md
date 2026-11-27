@@ -898,8 +898,17 @@ never find out it was meaningless.
 | Human DHFR activity data | ChEMBL `CHEMBL202` |
 | Trimethoprim in ChEMBL | `CHEMBL22` |
 
-**Do not use `P00382`**: the original project plan lists it as human DHFR, but it is an
-*E. coli* trimethoprim-resistance enzyme. See [`notes/identifiers.md`](notes/identifiers.md).
+**Human DHFR is `P00374`, not `P00382`.** `P00382` is an *E. coli*
+trimethoprim-resistance enzyme (157 aa, gene `dhfrI`).
+
+`PROJECT_PLAN.md` and everything in `notebooks/` already use the correct accession, so
+nothing in the pipeline is affected. The warning stays because two things in this repo
+can still mislead you:
+
+- The original PDF at [`docs/dhfr-trimethoprim-project-plan.pdf`](docs/dhfr-trimethoprim-project-plan.pdf) still says `P00382`. It is kept unedited on purpose, as the record of what was corrected.
+- `P00382.json` and its AlphaFold model are still in `data/raw/`, sitting next to `P00374`. They were kept deliberately, because a trimethoprim-resistance enzyme is genuinely useful for the resistance stretch task, but it means the wrong file is one careless autocomplete away.
+
+See [`notes/identifiers.md`](notes/identifiers.md).
 
 ### Glossary
 
