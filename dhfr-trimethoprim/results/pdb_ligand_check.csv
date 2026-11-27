@@ -1,0 +1,7 @@
+pdb,organism,ligands,pdf_says
+1RX2,Escherichia Coli,"BME,FOL,MN,NAP",folate + NADP+
+7DFR,Escherichia Coli,"FOL,NAP",folate + NADP+
+1U72,Homo Sapiens,"MTX,NDP",methotrexate + NADP+
+2W3A,Homo Sapiens,"GOL,NDP,SO4,TOP",trimethoprim + NADPH
+2W9G,Staphylococcus Aureus,"NDP,TOP",trimethoprim + NADPH
+2W9H,Staphylococcus Aureus,"EDO,TOP",trimethoprim + NADPH
