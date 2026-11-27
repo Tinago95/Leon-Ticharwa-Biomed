@@ -129,6 +129,36 @@ divisor manufactures the entire result.
 So the honest version is that this protocol ranks potency only weakly once you control
 for the most trivial property a molecule has.
 
+### The sharpest way to put the failure
+
+Docking's selectivity predictions all sit in a narrow band between +0.31 and +2.74
+kcal/mol, never crossing zero. Error is therefore set almost entirely by how far the true
+answer is from that band: |true selectivity| predicts |error| at ρ = **+0.90**.
+
+Which invites an uncomfortable comparison:
+
+| Predictor | Mean absolute error |
+|---|---|
+| **Always answer "no selectivity"** | **1.80 kcal/mol** |
+| Run the docking | 2.93 kcal/mol |
+| Always answer docking's own average (+1.48) | 2.96 kcal/mol |
+
+**A constant that ignores the chemistry entirely is more accurate than the docking.** Not
+marginally: by over a kcal/mol. Any method has to beat the trivial null before it has
+earned the right to be called a prediction, and this one does not.
+
+### A near-miss I nearly reported as a finding
+
+Docking looked much more accurate on compounds chemically similar to trimethoprim:
+mean error 1.12 kcal/mol for the close ones versus 3.67 for the distant ones, p = 0.004.
+That is a tidy applicability-domain story and I almost wrote it up.
+
+It is a confound. The compounds similar to trimethoprim are also the compounds with
+almost no selectivity (mean |ΔΔG| of 0.38 versus 2.39 kcal/mol). A method that predicts
+roughly zero selectivity for everything gets non-selective compounds right for free.
+Restricting to compounds of comparable difficulty, the effect disappears completely:
+1.12 versus 1.23 kcal/mol, p = 0.88.
+
 ### Where exactly it breaks
 
 A failed prediction is only interesting if you can say why. So I measured what the docked
@@ -186,7 +216,7 @@ for, and not at all for the selectivity question.
 
 The benchmark has real limits I'd rather state than have someone find:
 
-- **25 compounds** is small. Every confidence interval above is wide, and the selectivity interval spans zero, so strictly I cannot distinguish ρ = −0.21 from no relationship. The direction test is what carries that conclusion, not the correlation.
+- **25 compounds** is small, and the effective number is smaller still: at a Tanimoto cutoff of 0.7 they form only **16 clusters**, and six pairs share an identical fingerprint. Every confidence interval above is therefore optimistic, and the selectivity interval already spans zero. The direction test and the null-model comparison are what carry the conclusion, not the correlation.
 - **10 of the 25 pairs come from different papers**, mixing assay conditions. Only 15 are same-paper measurements where the comparison is clean.
 - **The set is chemically diverse** (median Tanimoto 0.22 to trimethoprim, none above 0.7). That makes it a fair test rather than a narrow analogue series, but it is also the regime where scoring functions are known to be weakest: ranking across scaffolds is harder than ranking within one.
 - **One target pair, one scoring function.** This says nothing general about docking as a technique.

@@ -1,0 +1,16 @@
+question,number,answer
+confidence interval,-0.21,"selectivity        rho -0.21  95% CI [-0.57, +0.21]  spans zero"
+confidence interval,+0.54,"potency, E. coli   rho +0.54  95% CI [+0.16, +0.79]"
+confidence interval,+0.11,"potency, human     rho +0.11  95% CI [-0.33, +0.54]  spans zero"
+size confound,+0.16,ecoli   score-vs-size -0.76 | potency +0.54 -> +0.16 with size fixed
+size confound,-0.06,human   score-vs-size -0.82 | potency +0.11 -> -0.06 with size fixed
+ligand efficiency artefact,+0.83,LE rho +0.83; same statistic on independent noise: median +0.83 (our value at the 54% percentile)
+effective sample size,16,25 compounds form 16 clusters at Tanimoto 0.7; 6 pairs share an identical fingerprint
+similarity spread,0.22,"Tanimoto to trimethoprim: median 0.22, range 0.12-0.59, none above 0.7"
+"applicability domain, naive",p=0.004,"near 1.12 vs far 3.67 kcal/mol, p = 0.004  (looks real)"
+"applicability domain, matched",,"near |selectivity| 0.38 vs far 2.39 kcal/mol, so the groups differ in difficulty, not just chemistry"
+"applicability domain, matched",p=0.876,"restricted to |selectivity| < 1: near 1.12 vs far 1.23, p = 0.876  (effect gone)"
+"applicability domain, matched",,similarity vs error: rho -0.12 -> +0.14 with difficulty held fixed
+error is driven by difficulty,+0.90,"|true selectivity| vs |error|: rho = +0.90 (docking predicts a narrow band, so error tracks distance from it)"
+null model comparison,2.93 vs 1.80,docking 2.93 | always predict 0.00: 1.80 | always predict +1.48: 2.96 kcal/mol
+null model verdict,,predicting zero selectivity for everything is MORE accurate than running the docking
