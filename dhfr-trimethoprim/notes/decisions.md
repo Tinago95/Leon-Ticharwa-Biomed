@@ -18,7 +18,7 @@ Left unfixed this would have compared *E. coli* against drug-resistant *E. coli*
 reported it as bacterial-vs-human selectivity. The run would have completed and the
 numbers would have looked reasonable, which is what makes it dangerous.
 
-**Kept anyway.** `P00382` is a real resistance enzyme, so it is useful for the page 10
+**Not kept.** `P00382` is a real resistance enzyme and would suit the page 10
 resistance stretch task, just not here.
 
 See [`identifiers.md`](identifiers.md) and `notebooks/00_verify_sources.ipynb`.

@@ -8,8 +8,8 @@ P00374 organism is human,Homo sapiens,Homo sapiens,PASS
 P00374 length is 187,187,187,PASS
 AlphaFold P0ABQ4 has 159 residues,159,159,PASS
 AlphaFold P00374 has 187 residues,187,187,PASS
-AlphaFold P00382 has 157 residues,157,157,PASS
 PDB and mmCIF agree for P0ABQ4,True,True,PASS
+PDB and mmCIF agree for P00374,True,True,PASS
 1RX2 residue 27 is Asp,D,D,PASS
 1RX2 residue 20 is Met,M,M,PASS
 1U72 contains NADP+ (NAP),True,False,FAIL

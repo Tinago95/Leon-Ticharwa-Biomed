@@ -901,14 +901,19 @@ never find out it was meaningless.
 **Human DHFR is `P00374`, not `P00382`.** `P00382` is an *E. coli*
 trimethoprim-resistance enzyme (157 aa, gene `dhfrI`).
 
-`PROJECT_PLAN.md` and everything in `notebooks/` already use the correct accession, so
-nothing in the pipeline is affected. The warning stays because two things in this repo
-can still mislead you:
+`PROJECT_PLAN.md`, everything in `notebooks/`, and `data/raw/` all use the correct
+accession. **No `P00382` file is stored in this repo**, so there is nothing to pick up by
+mistake.
 
-- The original PDF at [`docs/dhfr-trimethoprim-project-plan.pdf`](docs/dhfr-trimethoprim-project-plan.pdf) still says `P00382`. It is kept unedited on purpose, as the record of what was corrected.
-- `P00382.json` and its AlphaFold model are still in `data/raw/`, sitting next to `P00374`. They were kept deliberately, because a trimethoprim-resistance enzyme is genuinely useful for the resistance stretch task, but it means the wrong file is one careless autocomplete away.
+The warning remains for one reason: the original PDF at
+[`docs/dhfr-trimethoprim-project-plan.pdf`](docs/dhfr-trimethoprim-project-plan.pdf)
+still says `P00382`, and is kept unedited on purpose as the record of what was corrected.
+If you work from that PDF rather than from `PROJECT_PLAN.md`, you will reach for the
+wrong accession.
 
-See [`notes/identifiers.md`](notes/identifiers.md).
+`notebooks/00_verify_sources.ipynb` still checks `P00382` and still records the two
+failures, fetching the record live from UniProt rather than keeping a copy. See
+[`notes/identifiers.md`](notes/identifiers.md).
 
 ### Glossary
 

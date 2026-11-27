@@ -30,7 +30,7 @@ comparator would silently compare *E. coli* against drug-resistant *E. coli* and
 selectivity result that looks plausible and means nothing. This is the one error in the PDF
 that would invalidate a headline result rather than just a detail.
 
-Both are kept in `data/raw/`: `P00382` is genuinely interesting for the resistance
+`P00382` is not stored in `data/raw/`: it is genuinely interesting for the resistance
 stretch task on page 10, just not as the human target.
 
 ---

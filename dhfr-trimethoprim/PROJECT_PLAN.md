@@ -144,7 +144,8 @@ DHFR variants, by overproducing the target, or by reducing drug entry.
 
 > **Note.** `P00382`, which the original plan misidentifies as human DHFR, is itself one
 > of these resistance enzymes (*Dihydrofolate reductase type 1*, gene `dhfrI`). It is
-> already downloaded, and is genuinely useful for the resistance stretch task.
+> not stored in this repo, to remove any chance of reaching for the wrong
+> accession. Fetch it on demand if you take on the resistance stretch task.
 
 ---
 
