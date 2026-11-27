@@ -1,7 +1,7 @@
 # Verified identifiers
 
 Canonical reference for this project. **Use this table, not the one on page 6 of the
-project-plan PDF** — that table contains four errors, listed at the bottom.
+project-plan PDF**: that table contains four errors, listed at the bottom.
 
 Every row was re-derived from the files in `data/raw/` or from a live RCSB API query by
 [`notebooks/00_verify_sources.ipynb`](../notebooks/00_verify_sources.ipynb)
@@ -15,9 +15,9 @@ Last verified: 2026-11-27.
 
 | System | UniProt | Length | Organism | Gene | Notes |
 |---|---|---|---|---|---|
-| *E. coli* DHFR — **main target** | `P0ABQ4` | 159 aa | *Escherichia coli* K12 | `folA` | 18.0 kDa (computed). Asp27 and Met20 both confirmed present at those positions. |
-| Human DHFR — **selectivity comparison** | `P00374` | 187 aa | *Homo sapiens* | `DHFR` | **Corrected** — the PDF gives `P00382`, which is a different protein entirely. |
-| *S. aureus* DHFR — docking validation | not specified | 157 aa | *Staphylococcus aureus* | — | Work from the 2W9G coordinates; no UniProt accession verified for this project. |
+| *E. coli* DHFR, **main target** | `P0ABQ4` | 159 aa | *Escherichia coli* K12 | `folA` | 18.0 kDa (computed). Asp27 and Met20 both confirmed present at those positions. |
+| Human DHFR, **selectivity comparison** | `P00374` | 187 aa | *Homo sapiens* | `DHFR` | **Corrected**: the PDF gives `P00382`, which is a different protein entirely. |
+| *S. aureus* DHFR, docking validation | not specified | 157 aa | *Staphylococcus aureus* |, | Work from the 2W9G coordinates; no UniProt accession verified for this project. |
 
 ### Do not use `P00382`
 
@@ -30,7 +30,7 @@ comparator would silently compare *E. coli* against drug-resistant *E. coli* and
 selectivity result that looks plausible and means nothing. This is the one error in the PDF
 that would invalidate a headline result rather than just a detail.
 
-Both are kept in `data/raw/` — `P00382` is genuinely interesting for the resistance
+Both are kept in `data/raw/`: `P00382` is genuinely interesting for the resistance
 stretch task on page 10, just not as the human target.
 
 ---
@@ -45,7 +45,7 @@ Ligand codes are the actual chemical components present in each entry, read from
 | `7DFR` | *E. coli* | FOL, NAP | NADP+ (oxidised) | Alternative *E. coli* holoenzyme |
 | `1U72` | *Homo sapiens* | MTX, **NDP** | **NADPH (reduced)** | Human receptor, methotrexate control |
 | `2W3A` | *Homo sapiens* | TOP, NDP, GOL, SO4 | NADPH (reduced) | Human DHFR + trimethoprim |
-| `2W9G` | *S. aureus* | TOP, NDP | NADPH (reduced) | **Redocking gate (Phase 4b)** — has the cofactor |
+| `2W9G` | *S. aureus* | TOP, NDP | NADPH (reduced) | **Redocking gate (Phase 4b)**: has the cofactor |
 | `2W9H` | *S. aureus* | TOP, **EDO** | **none** | Apo-cofactor; do **not** use for the gate |
 
 **Ligand codes:** `FOL` folic acid · `NAP` NADP+ · `NDP` NADPH · `TOP` trimethoprim ·
@@ -55,7 +55,7 @@ Ligand codes are the actual chemical components present in each entry, read from
 ### Receptor-prep consequences
 
 - **`1RX2` carries Mn²⁺ and β-mercaptoethanol** beyond the folate and NADP+ the PDF
-  mentions. Phase 4a says "remove waters and the bound ligand — except keep NADPH/NADP+".
+  mentions. Phase 4a says "remove waters and the bound ligand, except keep NADPH/NADP+".
   That instruction does not cover MN and BME. Decide explicitly and record it; both are
   crystallisation additives and are normally stripped.
 - **`2W9H` has no cofactor.** Phase 4b's gate assumes trimethoprim *and* NADPH. Only
@@ -67,7 +67,7 @@ Ligand codes are the actual chemical components present in each entry, read from
 
 ### Numbering
 
-`1RX2` chain A is numbered **1–159 and matches UniProt `P0ABQ4` numbering directly** —
+`1RX2` chain A is numbered **1–159 and matches UniProt `P0ABQ4` numbering directly**:
 residue 27 is Asp, residue 20 is Met. No offset correction is needed for the Phase 5
 Asp27 contact test.
 
@@ -83,11 +83,12 @@ mismatch when aligning the AlphaFold model to the crystal; it is not a parsing b
 | Compound | Trimethoprim |
 | PubChem CID | `5578` |
 | Formula | C14H18N4O3 |
-| Atoms | 39 total — **21 heavy** + 18 hydrogens |
+| Atoms | 39 total, **21 heavy** + 18 hydrogens |
 | SMILES | `COc1cc(Cc2cnc(N)nc2N)cc(OC)c1OC` |
 
-The SMILES string hardcoded in the PDF (`COc1cc(cc(c1OC)OC)Cc2cnc(nc2N)N`) is **correct** —
-RDKit canonicalises it and the PubChem string to the identical form. Safe to use as written.
+The SMILES string hardcoded in the PDF (`COc1cc(cc(c1OC)OC)Cc2cnc(nc2N)N`) is
+**correct**: RDKit canonicalises it and the PubChem string to the identical form. Safe
+to use as written.
 
 ---
 
@@ -135,7 +136,7 @@ and state the method** rather than citing 26% as if it were measured.
 | 5 | 9 | Phase 4b command uses `vina --log` | `--log` was removed in Vina 1.2 | **Command fails as written** |
 
 Error 5: the plan cites Vina 1.2 (Eberhardt 2021) but writes 1.1.2 syntax. Redirect
-stdout instead — see [`decisions.md`](decisions.md).
+stdout instead. See [`decisions.md`](decisions.md).
 
 ### Verified correct
 
@@ -152,5 +153,5 @@ confirmed from `1RX2`'s own header annotation: one sheet (`A`) declaring 8 stran
 ### Not checked
 
 The journal citations on page 13 (Matthews 1985, Sawaya & Kraut 1997, Heaslet 2009,
-Eberhardt 2021, Jumper 2021) were **not verified** — authors, years and titles still need
+Eberhardt 2021, Jumper 2021) were **not verified**: authors, years and titles still need
 confirming against the literature before they go in a write-up.
