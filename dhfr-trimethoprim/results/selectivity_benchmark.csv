@@ -1,0 +1,5 @@
+test,n,spearman,rmse_kcal
+"potency ranking, E. coli",25,0.541,2.84
+"potency ranking, human",25,0.113,1.72
+selectivity (cross-protein),25,-0.208,3.54
+"selectivity, double difference",24,-0.2,2.93

@@ -241,6 +241,13 @@ def prepare_ligand(smiles: str, name: str, *, seed: int = 42) -> Path:
     mol = Chem.MolFromSmiles(smiles)
     if mol is None:
         raise ValueError(f"bad SMILES for {name}: {smiles}")
+
+    # ChEMBL often stores salts (parent + counterion). Dock the parent only:
+    # the counterion is not part of the binding species.
+    frags = Chem.GetMolFrags(mol, asMols=True, sanitizeFrags=True)
+    if len(frags) > 1:
+        mol = max(frags, key=lambda m: m.GetNumHeavyAtoms())
+
     mol = Chem.AddHs(mol)
     if AllChem.EmbedMolecule(mol, randomSeed=seed) != 0:
         raise RuntimeError(f"embedding failed for {name}")
